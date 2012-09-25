@@ -52,15 +52,15 @@ data from the database and serialize them directly to JSON without
 noticing the wrong type. If you're getting mysterious errors, double
 check that you're inputting numbers and not strings.
 
-If a null is specified as a point or if one of the coordinates is null
+If a `null` is specified as a point or if one of the coordinates is `null`
 or couldn't be converted to a number, the point is ignored when
-drawing. As a special case, a null value for lines is interpreted as a
-line segment end, i.e. the points before and after the null value are
+drawing. As a special case, a `null` value for lines is interpreted as a
+line segment end, i.e. the points before and after the `null` value are
 not connected.
 
 Lines and points take two coordinates. For filled lines and bars, you
 can specify a third coordinate which is the bottom of the filled
-area/bar (defaults to 0).
+area/bar (defaults to `0`).
 
 The format of a single series object is as follows:
 
@@ -97,18 +97,18 @@ will not show up in the legend.
 
 If you don't specify color, the series will get a color from the
 auto-generated colors. The color is either a CSS color specification
-(like "rgb(255, 100, 123)") or an integer that specifies which of
-auto-generated colors to select, e.g. 0 will get color no. 0, etc.
+(like `rgb(255, 100, 123)`) or an integer that specifies which of
+auto-generated colors to select, e.g. `0` will get color no. 0, etc.
 
 The latter is mostly useful if you let the user add and remove series,
 in which case you can hard-code the color index to prevent the colors
 from jumping around between the series.
 
-The "xaxis" and "yaxis" options specify which axis to use. The axes
-are numbered from 1 (default), so { yaxis: 2} means that the series
+The `xaxis` and `yaxis` options specify which axis to use. The axes
+are numbered from 1 (default), so `{ yaxis: 2}` means that the series
 should be plotted against the second y axis.
 
-"clickable" and "hoverable" can be set to false to disable
+`clickable` and `hoverable` can be set to `false` to disable
 interactivity for specific series if interactivity is turned on in
 the plot, see below.
 
@@ -163,7 +163,7 @@ legend: {
 The legend is generated as a table with the data series labels and
 small label boxes with the color of the series. If you want to format
 the labels in some way, e.g. make them to links, you can pass in a
-function for "labelFormatter". Here's an example that makes them
+function for `labelFormatter`. Here's an example that makes them
 clickable:
 
 ```js
@@ -173,25 +173,25 @@ labelFormatter: function(label, series) {
 }
 ```
 
-"noColumns" is the number of columns to divide the legend table into.
-"position" specifies the overall placement of the legend within the
+`noColumns` is the number of columns to divide the legend table into.
+`position` specifies the overall placement of the legend within the
 plot (top-right, top-left, etc.) and margin the distance to the plot
-edge (this can be either a number or an array of two numbers like [x,
-y]). "backgroundColor" and "backgroundOpacity" specifies the
+edge (this can be either a number or an array of two numbers like `[x,
+y]`). `backgroundColor` and `backgroundOpacity` specifies the
 background. The default is a partly transparent auto-detected
 background.
 
 If you want the legend to appear somewhere else in the DOM, you can
-specify "container" as a jQuery object/expression to put the legend
-table into. The "position" and "margin" etc. options will then be
+specify `container` as a jQuery object/expression to put the legend
+table into. The `position` and `margin` etc. options will then be
 ignored. Note that Flot will overwrite the contents of the container.
 
 Legend entries appear in the same order as their series by default. To
-sort them alphabetically, you can specify "sorted" as tue, "ascending"
-or "descending", where true and "ascending" are equivalent.
+sort them alphabetically, you can specify `sorted` as `true`, `"ascending"`
+or `"descending"`, where `true` and `"ascending"` are equivalent.
 
 You can also provide your own comparator function that accepts two
-objects with "label" and "color" properties, and returns zero if they
+objects with `label` and `color` properties, and returns zero if they
 are equal, a positive value if the first is greater than the second,
 and a negative value if the first is less than the second.
 
@@ -245,28 +245,28 @@ All axes have the same kind of options. The following describes how to
 configure one axis, see below for what to do if you've got more than
 one x axis or y axis.
 
-If you don't set the "show" option (i.e. it is null), visibility is
+If you don't set the `show` option (i.e. it is `null`), visibility is
 auto-detected, i.e. the axis will show up if there's data associated
-with it. You can override this by setting the "show" option to true or
-false.
+with it. You can override this by setting the `show` option to `true` or
+`false`.
 
-The "position" option specifies where the axis is placed, bottom or
-top for x axes, left or right for y axes. The "mode" option determines
-how the data is interpreted, the default of null means as decimal
-numbers. Use "time" for time series data; see the time series data
-section. The time plugin (jquery.flot.time.js) is required for time
+The `position` option specifies where the axis is placed, bottom or
+top for x axes, left or right for y axes. The `mode` option determines
+how the data is interpreted, the default of `null` means as decimal
+numbers. Use `time` for time series data; see the time series data
+section. The time plugin (*jquery.flot.time.js*) is required for time
 series support.
 
-The "color" option determines the color of the labels and ticks for
+The `color` option determines the color of the labels and ticks for
 the axis (default is the grid color). For more fine-grained control
-you can also set the color of the ticks separately with "tickColor"
+you can also set the color of the ticks separately with `tickColor`
 (otherwise it's autogenerated as the base color with some
 transparency).
 
 You can customize the font used to draw the labels with CSS or
-directly with "font". The default value of null means that the font is
+directly with `font`. The default value of `null` means that the font is
 read from the font style on the placeholder element (80% the size of
-that to be precise). If you set it directly with "font: { ... }", the
+that to be precise). If you set it directly with `font: { ... }`, the
 format is like this:
 
 ```js
@@ -279,22 +279,22 @@ format is like this:
 }
 ```
 
-The options "min"/"max" are the precise minimum/maximum value on the
+The options `min`/`max` are the precise minimum/maximum value on the
 scale. If you don't specify either of them, a value will automatically
 be chosen based on the minimum/maximum data values. Note that Flot
 always examines all the data values you feed to it, even if a
 restriction on another axis may make some of them invisible (this
 makes interactive use more stable).
 
-The "autoscaleMargin" is a bit esoteric: it's the fraction of margin
+The `autoscaleMargin` is a bit esoteric: it's the fraction of margin
 that the scaling algorithm will add to avoid that the outermost points
 ends up on the grid border. Note that this margin is only applied when
 a min or max value is not explicitly set. If a margin is specified,
 the plot will furthermore extend the axis end-point to the nearest
-whole tick. The default value is "null" for the x axes and 0.02 for y
+whole tick. The default value is `null` for the x axes and `0.02` for y
 axes which seems appropriate for most cases.
 
-"transform" and "inverseTransform" are callbacks you can put in to
+`transform` and `inverseTransform` are callbacks you can put in to
 change the way the data is drawn. You can design a function to
 compress or expand certain parts of the axis non-linearly, e.g.
 suppress weekends or compress far away points with a logarithm or some
@@ -323,7 +323,7 @@ Note that for finding extrema, Flot assumes that the transform
 function does not reorder values (it should be monotone).
 
 The inverseTransform is simply the inverse of the transform function
-(so v == inverseTransform(transform(v)) for all relevant v). It is
+(so `v == inverseTransform(transform(v))` for all relevant v). It is
 required for converting from canvas coordinates to data coordinates,
 e.g. for a mouse interaction where a certain pixel is clicked. If you
 don't use any interactive features of Flot, you may not need it.
@@ -337,20 +337,20 @@ many ticks would be reasonable and uses this number to compute a nice
 round tick interval size. Then it generates the ticks.
 
 You can specify how many ticks the algorithm aims for by setting
-"ticks" to a number. The algorithm always tries to generate reasonably
+`ticks` to a number. The algorithm always tries to generate reasonably
 round tick values so even if you ask for three ticks, you might get
 five if that fits better with the rounding. If you don't want any
-ticks at all, set "ticks" to 0 or an empty array.
+ticks at all, set `ticks` to `0` or an empty array.
 
 Another option is to skip the rounding part and directly set the tick
-interval size with "tickSize". If you set it to 2, you'll get ticks at
+interval size with `tickSize`. If you set it to `2`, you'll get ticks at
 2, 4, 6, etc. Alternatively, you can specify that you just don't want
-ticks at a size less than a specific tick size with "minTickSize".
-Note that for time series, the format is an array like [2, "month"],
+ticks at a size less than a specific tick size with `minTickSize`.
+Note that for time series, the format is an array like `[2, "month"]`,
 see the next section.
 
 If you want to completely override the tick algorithm, you can specify
-an array for "ticks", either like this:
+an array for `ticks`, either like this:
 
 ```js
 ticks: [0, 1.2, 2.4]
@@ -363,8 +363,8 @@ ticks: [[0, "zero"], [1.2, "one mark"], [2.4, "two marks"]]
 ```
 
 You can mix the two if you like.
-  
-For extra flexibility you can specify a function as the "ticks"
+
+For extra flexibility you can specify a function as the `ticks`
 parameter. The function will be called with an object with the axis
 min and max and should return a ticks array. Here's a simplistic tick
 generator that spits out intervals of pi, suitable for use on the x
@@ -382,11 +382,11 @@ function piTickGenerator(axis) {
 }
 ```
 
-You can control how the ticks look like with "tickDecimals", the
+You can control how the ticks look like with `tickDecimals`, the
 number of decimals to display (default is auto-detected).
 
 Alternatively, for ultimate control over how ticks are formatted you can
-provide a function to "tickFormatter". The function is passed two
+provide a function to `tickFormatter`. The function is passed two
 parameters, the tick value and an axis object with information, and
 should return a string. The default formatter looks like this:
 
@@ -396,9 +396,9 @@ function formatter(val, axis) {
 }
 ```
 
-The axis object has "min" and "max" with the range of the axis,
-"tickDecimals" with the number of decimals to round the value to and
-"tickSize" with the size of the interval between ticks as calculated
+The axis object has `min` and `max` with the range of the axis,
+`tickDecimals` with the number of decimals to round the value to and
+`tickSize` with the size of the interval between ticks as calculated
 by the automatic axis scaling algorithm (or specified by you). Here's
 an example of a custom formatter:
 
@@ -413,20 +413,20 @@ function suffixFormatter(val, axis) {
 }
 ```
 
-"labelWidth" and "labelHeight" specifies a fixed size of the tick
+`labelWidth` and `labelHeight` specifies a fixed size of the tick
 labels in pixels. They're useful in case you need to align several
-plots. "reserveSpace" means that even if an axis isn't shown, Flot
+plots. `reserveSpace` means that even if an axis isn't shown, Flot
 should reserve space for it - it is useful in combination with
-labelWidth and labelHeight for aligning multi-axis charts.
+`labelWidth` and `labelHeight` for aligning multi-axis charts.
 
-"tickLength" is the length of the tick lines in pixels. By default, the
+`tickLength` is the length of the tick lines in pixels. By default, the
 innermost axes will have ticks that extend all across the plot, while
-any extra axes use small ticks. A value of null means use the default,
-while a number means small ticks of that length - set it to 0 to hide
+any extra axes use small ticks. A value of `null` means use the default,
+while a number means small ticks of that length - set it to `0` to hide
 the lines completely.
 
-If you set "alignTicksWithAxis" to the number of another axis, e.g.
-alignTicksWithAxis: 1, Flot will ensure that the autogenerated ticks
+If you set `alignTicksWithAxis` to the number of another axis, e.g.
+`alignTicksWithAxis: 1`, Flot will ensure that the autogenerated ticks
 of this axis are aligned with the ticks of the other axis. This may
 improve the looks, e.g. if you have one y axis to the left and one to
 the right, because the grid lines will then match the ticks in both
@@ -438,7 +438,7 @@ natural places.
 
 If you need more than one x axis or y axis, you need to specify for
 each data series which axis they are to use, as described under the
-format of the data series, e.g. { data: [...], yaxis: 2 } specifies
+format of the data series, e.g. `{ data: [...], yaxis: 2 }` specifies
 that a series should be plotted against the second y axis.
 
 To actually configure that axis, you can't use the xaxis/yaxis options
@@ -459,20 +459,20 @@ can leave options of the first y axis empty as the defaults are fine):
 }
 ```
 
-The arrays get their default values from the xaxis/yaxis settings, so
+The arrays get their default values from the `xaxis`/`yaxis` settings, so
 say you want to have all y axes start at zero, you can simply specify
-yaxis: { min: 0 } instead of adding a min parameter to all the axes.
+`yaxis: { min: 0 }` instead of adding a min parameter to all the axes.
 
 Generally, the various interfaces in Flot dealing with data points
-either accept an xaxis/yaxis parameter to specify which axis number to
+either accept an `xaxis`/`yaxis` parameter to specify which axis number to
 use (starting from 1), or lets you specify the coordinate directly as
-x2/x3/... or x2axis/x3axis/... instead of "x" or "xaxis".
+`x2`/`x3`/... or `x2axis`/`x3axis`/... instead of `x` or `xaxis`.
 
 
 ## Time series data ##
 
 Please note that it is now required to include the time plugin,
-jquery.flot.time.js, for time series support.
+*jquery.flot.time.js*, for time series support.
 
 Time series are a bit more difficult than scalar data because
 calendars don't follow a simple base 10 system. For many cases, Flot
@@ -481,9 +481,9 @@ get the data into Flot. So we'll first discuss the data format.
 
 The time series support in Flot is based on Javascript timestamps,
 i.e. everywhere a time value is expected or handed over, a Javascript
-timestamp number is used. This is a number, not a Date object. A
-Javascript timestamp is the number of milliseconds since January 1,
-1970 00:00:00 UTC. This is almost the same as Unix timestamps, except it's
+timestamp number is used. This is a number, not a `Date` object. A
+Javascript timestamp is the number of milliseconds since *January 1,
+1970 00:00:00 UTC*. This is almost the same as Unix timestamps, except it's
 in milliseconds, so remember to multiply by 1000!
 
 You can see a timestamp like this
@@ -508,7 +508,7 @@ limitation.
 
 The easiest way to think about it is to pretend that the data
 production time zone is UTC, even if it isn't. So if you have a
-datapoint at 2002-02-20 08:00, you can generate a timestamp for eight
+datapoint at *2002-02-20 08:00*, you can generate a timestamp for eight
 o'clock UTC even if it really happened eight o'clock UTC+0200.
 
 In PHP you can get an appropriate timestamp with:
@@ -549,22 +549,22 @@ The alternative with core Javascript is to interpret the timestamps
 according to the time zone that the visitor is in, which means that
 the ticks will shift with the time zone and daylight savings of each
 visitor. This behavior is enabled by setting the axis option
-"timezone" to the value "browser".
+`timezone` to the value `browser`.
 
 If you need more time zone functionality than this, there is still
-another option. If you include the "timezone-js" library
-<https://github.com/mde/timezone-js> in the page and set axis.timezone
-to a value recognized by said library, Flot will use timezone-js to
+another option. If you include the *timezone-js* library
+<https://github.com/mde/timezone-js> in the page and set `axis.timezone`
+to a value recognized by said library, Flot will use *timezone-js* to
 interpret the timestamps according to that time zone.
 
-Once you've gotten the timestamps into the data and specified "time"
+Once you've gotten the timestamps into the data and specified `time`
 as the axis mode, Flot will automatically generate relevant ticks and
-format them. As always, you can tweak the ticks via the "ticks" option
-- just remember that the values should be timestamps (numbers), not
-Date objects.
+format them. As always, you can tweak the ticks via the `ticks` option
+(just remember that the values should be timestamps (numbers), **not**
+`Date` objects).
 
 Tick generation and formatting can also be controlled separately
-through the following axis options:
+through the following *axis* options:
 
 ```js
 minTickSize: array
@@ -574,7 +574,7 @@ dayNames: null or array of size 7 of strings
 twelveHourClock: boolean
 ```
 
-Here "timeformat" is a format string to use. You might use it like
+Here `timeformat` is a format string to use. You might use it like
 this:
 
 ```js
@@ -584,7 +584,7 @@ xaxis: {
 }
 ``` 
 
-This will result in tick labels like "2000/12/24". A subset of the 
+This will result in tick labels like *2000/12/24*. A subset of the
 standard strftime specifiers are supported:
 
 ```js
@@ -604,24 +604,24 @@ standard strftime specifiers are supported:
 %w: weekday as number (0-6, 0 being Sunday)
 ```
 
-You can customize the month names with the "monthNames" option. For
+You can customize the month names with the `monthNames` option. For
 instance, for Danish you might specify:
 
 ```js
 monthNames: ["jan", "feb", "mar", "apr", "maj", "jun", "jul", "aug", "sep", "okt", "nov", "dec"]
 ```
 
-Similarly you can customize the weekday names with the "dayNames"
+Similarly you can customize the weekday names with the `dayNames`
 option. An example in French:
 
 ```js
 dayNames: ["dim", "lun", "mar", "mer", "jeu", "ven", "sam"]
 ```
 
-If you set "twelveHourClock" to true, the autogenerated timestamps
+If you set `twelveHourClock` to `true`, the autogenerated timestamps
 will use 12 hour AM/PM timestamps instead of 24 hour. This only
-applies if you have not set "timeformat". Use the "%I" and "%p" or
-"%P" options if you want to build your own format string with 12-hour
+applies if you have not set `timeformat`. Use the *%I* and *%p* or
+*%P* options if you want to build your own format string with 12-hour
 times.
 
 If the Date object has a strftime property (and it is a function), it
@@ -640,9 +640,9 @@ tickFormatter: function (val, axis) {
 }
 ```
 
-Note that for the time mode "tickSize" and "minTickSize" are a bit
-special in that they are arrays on the form "[value, unit]" where unit
-is one of "second", "minute", "hour", "day", "month" and "year". So
+Note that for the time mode `tickSize` and `minTickSize` are a bit
+special in that they are arrays on the form `[value, unit]` where unit
+is one of `"second"`, `"minute"`, `"hour"`, `"day"`, `"month"` and `"year"`. So
 you can specify
 
 ```js
@@ -650,7 +650,7 @@ minTickSize: [1, "month"]
 ```
 
 to get a tick interval size of at least 1 month and correspondingly,
-if axis.tickSize is [2, "day"] in the tick formatter, the ticks have
+if `axis.tickSize` is `[2, "day"]` in the tick formatter, the ticks have
 been produced with two days in-between.
 
 
@@ -687,16 +687,16 @@ series: {
 colors: [ color1, color2, ... ]
 ```
 
-The options inside "series: {}" are copied to each of the series. So
+The options inside `series: {}` are copied to each of the series. So
 you can specify that all series should have bars by putting it in the
 global options, or override it for individual series by specifying
 bars in a particular the series object in the array of data.
-  
-The most important options are "lines", "points" and "bars" that
+
+The most important options are `lines`, `points` and `bars` that
 specify whether and how lines, points and bars should be shown for
 each data series. In case you don't specify anything at all, Flot will
 default to showing lines (you can turn this off with
-lines: { show: false }). You can specify the various types
+`lines: { show: false }`). You can specify the various types
 independently of each other, and Flot will happily draw each of them
 in turn (this is probably only useful for lines and points), e.g.
 
@@ -709,31 +709,31 @@ var options = {
 };
 ```
 
-"lineWidth" is the thickness of the line or outline in pixels. You can
+`lineWidth` is the thickness of the line or outline in pixels. You can
 set it to 0 to prevent a line or outline from being drawn; this will
 also hide the shadow.
 
-"fill" is whether the shape should be filled. For lines, this produces
-area graphs. You can use "fillColor" to specify the color of the fill.
-If "fillColor" evaluates to false (default for everything except
+`fill` is whether the shape should be filled. For lines, this produces
+area graphs. You can use `fillColor` to specify the color of the fill.
+If `fillColor` evaluates to *false* (default for everything except
 points which are filled with white), the fill color is auto-set to the
 color of the data series. You can adjust the opacity of the fill by
-setting fill to a number between 0 (fully transparent) and 1 (fully
+setting fill to a number between `0` (fully transparent) and `1` (fully
 opaque).
 
-For bars, fillColor can be a gradient, see the gradient documentation
-below. "barWidth" is the width of the bars in units of the x axis (or
-the y axis if "horizontal" is true), contrary to most other measures
+For bars, `fillColor` can be a gradient, see the gradient documentation
+below. `barWidth` is the width of the bars in units of the x axis (or
+the y axis if `horizontal` is `true`), contrary to most other measures
 that are specified in pixels. For instance, for time series the unit
-is milliseconds so 24 * 60 * 60 * 1000 produces bars with the width of
-a day. "align" specifies whether a bar should be left-aligned
-(default), right-aligned or centered on top of the value it represents. 
-When "horizontal" is on, the bars are drawn horizontally, i.e. from the 
+is milliseconds so `24 * 60 * 60 * 1000` produces bars with the width of
+a day. `align` specifies whether a bar should be left-aligned
+(default), right-aligned or centered on top of the value it represents.
+When `horizontal` is on, the bars are drawn horizontally, i.e. from the
 y axis instead of the x axis; note that the bar end points are still
 defined in the same way so you'll probably want to swap the
 coordinates if you've been plotting vertical bars first.
 
-For lines, "steps" specifies whether two adjacent data points are
+For lines, `steps` specifies whether two adjacent data points are
 connected with a straight (possibly diagonal) line or with first a
 horizontal and then a vertical line. Note that this transforms the
 data by adding extra points.
@@ -752,21 +752,21 @@ function cross(ctx, x, y, radius, shadow) {
 }
 ```
 
-The parameters are the drawing context, x and y coordinates of the
-center of the point, a radius which corresponds to what the circle
-would have used and whether the call is to draw a shadow (due to
+The parameters are *the drawing context*, *x and y coordinates* of the
+center of the point, *a radius* which corresponds to what the circle
+would have used and whether the call is to *draw a shadow* (due to
 limited canvas support, shadows are currently faked through extra
 draws). It's good practice to ensure that the area covered by the
 symbol is the same as for the circle with the given radius, this
 ensures that all symbols have approximately the same visual weight.
 
-"shadowSize" is the default size of shadows in pixels. Set it to 0 to
+`shadowSize` is the default size of shadows in pixels. Set it to `0` to
 remove shadows.
 
-"highlightColor" is the default color of the translucent overlay used
+`highlightColor` is the default color of the translucent overlay used
 to highlight the series when the mouse hovers over it.
 
-The "colors" array specifies a default color theme to get colors for
+The `colors` array specifies a default color theme to get colors for
 the data series from. You can specify as many colors as you like, like
 this:
 
@@ -804,18 +804,18 @@ interaction: {
 }
 ```
 
-The grid is the thing with the axes and a number of ticks. Many of the
+The *grid* is the thing with the axes and a number of ticks. Many of the
 things in the grid are configured under the individual axes, but not
-all. "color" is the color of the grid itself whereas "backgroundColor"
-specifies the background color inside the grid area, here null means
+all. `color` is the color of the grid itself whereas `backgroundColor`
+specifies the background color inside the grid area, here `null` means
 that the background is transparent. You can also set a gradient, see
 the gradient documentation below.
 
 You can turn off the whole grid including tick labels by setting
-"show" to false. "aboveData" determines whether the grid is drawn
+`show` to `false`. `aboveData` determines whether the grid is drawn
 above the data or below (below is default).
 
-"margin" is the space in pixels between the canvas edge and the grid,
+`margin` is the space in pixels between the canvas edge and the grid,
 which can be either a number or an object with individual margins for
 each side, in the form:
 
@@ -828,26 +828,26 @@ margin: {
 }
 ```
 
-"labelMargin" is the space in pixels between tick labels and axis
-line, and "axisMargin" is the space in pixels between axes when there
+`labelMargin` is the space in pixels between tick labels and axis
+line, and `axisMargin` is the space in pixels between axes when there
 are two next to each other.
 
-"borderWidth" is the width of the border around the plot. Set it to 0
-to disable the border. You can also set "borderColor" if you want the
+`borderWidth` is the width of the border around the plot. Set it to `0`
+to disable the border. You can also set `borderColor` if you want the
 border to have a different color than the grid lines.
-"minBorderMargin" controls the default minimum margin around the
+`minBorderMargin` controls the default minimum margin around the
 border - it's used to make sure that points aren't accidentally
 clipped by the canvas edge so by default the value is computed from
 the point radius.
 
-"markings" is used to draw simple lines and rectangular areas in the
+`markings` is used to draw simple lines and rectangular areas in the
 background of the plot. You can either specify an array of ranges on
-the form { xaxis: { from, to }, yaxis: { from, to } } (with multiple
+the form `{ xaxis: { from, to }, yaxis: { from, to } }` (with multiple
 axes, you can specify coordinates for other axes instead, e.g. as
-x2axis/x3axis/...) or with a function that returns such an array given
+`x2axis`/`x3axis`/...) or with a function that returns such an array given
 the axes for the plot in an object as the first parameter.
 
-You can set the color of markings by specifying "color" in the ranges
+You can set the color of markings by specifying `color` in the ranges
 object. Here's an example array:
 
 ```js
@@ -855,8 +855,8 @@ markings: [ { xaxis: { from: 0, to: 2 }, yaxis: { from: 10, to: 10 }, color: "#b
 ```
 
 If you leave out one of the values, that value is assumed to go to the
-border of the plot. So for example if you only specify { xaxis: {
-from: 0, to: 2 } } it means an area that extends from the top to the
+border of the plot. So for example if you only specify `{ xaxis: {
+from: 0, to: 2 } }` it means an area that extends from the top to the
 bottom of the plot in the x range 0-2.
 
 A line is drawn if from and to are the same, e.g.
@@ -866,7 +866,7 @@ markings: [ { yaxis: { from: 1, to: 1 } }, ... ]
 ```
 
 would draw a line parallel to the x axis at y = 1. You can control the
-line width with "lineWidth" in the range object.
+line width with `lineWidth` in the range object.
 
 An example function that makes vertical stripes might look like this:
 
@@ -879,20 +879,20 @@ markings: function (axes) {
 }
 ```
 
-If you set "clickable" to true, the plot will listen for click events
-on the plot area and fire a "plotclick" event on the placeholder with
+If you set `clickable` to `true`, the plot will listen for click events
+on the plot area and fire a `plotclick` event on the placeholder with
 a position and a nearby data item object as parameters. The coordinates
 are available both in the unit of the axes (not in pixels) and in
 global screen coordinates.
 
-Likewise, if you set "hoverable" to true, the plot will listen for
-mouse move events on the plot area and fire a "plothover" event with
-the same parameters as the "plotclick" event. If "autoHighlight" is
-true (the default), nearby data items are highlighted automatically.
+Likewise, if you set `hoverable` to `true`, the plot will listen for
+mouse move events on the plot area and fire a `plothover` event with
+the same parameters as the `plotclick` event. If `autoHighlight` is
+`true` (the default), nearby data items are highlighted automatically.
 If needed, you can disable highlighting and control it yourself with
-the highlight/unhighlight plot methods described elsewhere.
+the `highlight`/`unhighlight` plot methods described elsewhere.
 
-You can use "plotclick" and "plothover" events like this:
+You can use `plotclick` and `plothover` events like this:
 
 ```js
 $.plot($("#placeholder"), [ d ], { grid: { clickable: true } });
@@ -909,7 +909,7 @@ $("#placeholder").bind("plotclick", function (event, pos, item) {
 });
 ```
 
-The item object in this example is either null or a nearby object on the form:
+The item object in this example is either `null` or a nearby object on the form:
 
 ```js
 item: {
@@ -921,39 +921,39 @@ item: {
 }
 ```
 
-For instance, if you have specified the data like this 
+For instance, if you have specified the data like this
 
 ```js
 $.plot($("#placeholder"), [ { label: "Foo", data: [[0, 10], [7, 3]] } ], ...);
 ```
 
-and the mouse is near the point (7, 3), "datapoint" is [7, 3],
-"dataIndex" will be 1, "series" is a normalized series object with
-among other things the "Foo" label in series.label and the color in
-series.color, and "seriesIndex" is 0. Note that plugins and options
+and the mouse is near the point `(7, 3)`, `datapoint` is `[7, 3]`,
+`dataIndex` will be `1`, `series` is a normalized series object with
+among other things the *Foo* label in `series.label` and the color in
+`series.color`, and `seriesIndex` is `0`. Note that plugins and options
 that transform the data can shift the indexes from what you specified
 in the original data array.
 
 If you use the above events to update some other information and want
 to clear out that info in case the mouse goes away, you'll probably
-also need to listen to "mouseout" events on the placeholder div.
+also need to listen to `mouseout` events on the placeholder div.
 
-"mouseActiveRadius" specifies how far the mouse can be from an item
+`mouseActiveRadius` specifies how far the mouse can be from an item
 and still activate it. If there are two or more points within this
 radius, Flot chooses the closest item. For bars, the top-most bar
 (from the latest specified data series) is chosen.
 
 If you want to disable interactivity for a specific data series, you
-can set "hoverable" and "clickable" to false in the options for that
+can set `hoverable` and `clickable` to `false` in the options for that
 series, like this:
 
 ```js
 { data: [...], label: "Foo", clickable: false }
 ```
 
-"redrawOverlayInterval" specifies the maximum time to delay a redraw
+`redrawOverlayInterval` specifies the maximum time to delay a redraw
 of interactive things (this works as a rate limiting device). The
-default is capped to 60 frames per second. You can set it to -1 to
+default is capped to 60 frames per second. You can set it to `-1` to
 disable the rate limiting.
 
 
@@ -1004,89 +1004,89 @@ bottom because that's what works with IE.
 The Plot object returned from the plot function has some methods you
 can call:
 
- - highlight(series, datapoint)
+ - `highlight(series, datapoint)`
 
     Highlight a specific datapoint in the data series. You can either
     specify the actual objects, e.g. if you got them from a
-    "plotclick" event, or you can specify the indices, e.g.
+    `plotclick` event, or you can specify the indices, e.g.
     highlight(1, 3) to highlight the fourth point in the second series
     (remember, zero-based indexing).
 
- - unhighlight(series, datapoint) or unhighlight()
+ - `unhighlight(series, datapoint)` or `unhighlight()`
 
     Remove the highlighting of the point, same parameters as
     highlight.
 
-    If you call unhighlight with no parameters, e.g. as
-    plot.unhighlight(), all current highlights are removed.
+    If you call `unhighlight` with no parameters, e.g. as
+    `plot.unhighlight()`, all current highlights are removed.
 
- - setData(data)
+ - `setData(data)`
 
     You can use this to reset the data used. Note that axis scaling,
-    ticks, legend etc. will not be recomputed (use setupGrid() to do
-    that). You'll probably want to call draw() afterwards.
+    ticks, legend etc. will not be recomputed (use `setupGrid()` to do
+    that). You'll probably want to call `draw()` afterwards.
 
     You can use this function to speed up redrawing a small plot if
     you know that the axes won't change. Put in the new data with
-    setData(newdata), call draw(), and you're good to go. Note that
-    for large datasets, almost all the time is consumed in draw()
+    `setData(newdata)`, call `draw()`, and you're good to go. Note that
+    for large datasets, almost all the time is consumed in `draw()`
     plotting the data so in this case don't bother.
 
- - setupGrid()
+ - `setupGrid()`
 
     Recalculate and set axis scaling, ticks, legend etc.
 
     Note that because of the drawing model of the canvas, this
     function will immediately redraw (actually reinsert in the DOM)
     the labels and the legend, but not the actual tick lines because
-    they're drawn on the canvas. You need to call draw() to get the
+    they're drawn on the canvas. You need to call `draw()` to get the
     canvas redrawn.
 
- - draw()
+ - `draw()`
 
     Redraws the plot canvas.
 
- - triggerRedrawOverlay()
+ - `triggerRedrawOverlay()`
 
     Schedules an update of an overlay canvas used for drawing
     interactive things like a selection and point highlights. This
     is mostly useful for writing plugins. The redraw doesn't happen
     immediately, instead a timer is set to catch multiple successive
     redraws (e.g. from a mousemove). You can get to the overlay by
-    setting up a drawOverlay hook.
+    setting up a `drawOverlay` hook.
 
- - width()/height()
+ - `width()`/`height()`
 
     Gets the width and height of the plotting area inside the grid.
     This is smaller than the canvas or placeholder dimensions as some
     extra space is needed (e.g. for labels).
 
- - offset()
+ - `offset()`
 
     Returns the offset of the plotting area inside the grid relative
     to the document, useful for instance for calculating mouse
-    positions (event.pageX/Y minus this offset is the pixel position
+    positions (`event.pageX/Y` minus this offset is the pixel position
     inside the plot).
 
- - pointOffset({ x: xpos, y: ypos })
+ - `pointOffset({ x: xpos, y: ypos })`
 
-    Returns the calculated offset of the data point at (x, y) in data
+    Returns the calculated offset of the data point at `(x, y)` in data
     space within the placeholder div. If you are working with multiple
-    axes, you can specify the x and y axis references, e.g. 
+    axes, you can specify the x and y axis references, e.g.
 
     ```js
       o = pointOffset({ x: xpos, y: ypos, xaxis: 2, yaxis: 3 })
       // o.left and o.top now contains the offset within the div
-    ````
+    ```
 
- - resize()
+ - `resize()`
 
     Tells Flot to resize the drawing canvas to the size of the
-    placeholder. You need to run setupGrid() and draw() afterwards as
+    placeholder. You need to run `setupGrid()` and `draw()` afterwards as
     canvas resizing is a destructive operation. This is used
     internally by the resize plugin.
 
- - shutdown()
+ - `shutdown()`
 
     Cleans up any event handlers Flot has currently registered. This
     is used internally.
@@ -1096,7 +1096,7 @@ workings of Flot which is useful in some cases. Note that if you change
 something in the objects returned, you're changing the objects used by
 Flot to keep track of its state, so be careful.
 
-  - getData()
+  - `getData()`
 
     Returns an array of the data series currently used in normalized
     form with missing settings filled in according to the global
@@ -1110,56 +1110,56 @@ Flot to keep track of its state, so be careful.
     ```
 
     A notable other interesting field besides color is datapoints
-    which has a field "points" with the normalized data points in a
-    flat array (the field "pointsize" is the increment in the flat
+    which has a field `points` with the normalized data points in a
+    flat array (the field `pointsize` is the increment in the flat
     array to get to the next point so for a dataset consisting only of
-    (x,y) pairs it would be 2).
+    `(x,y)` pairs it would be `2`).
 
-  - getAxes()
+  - `getAxes()`
 
     Gets an object with the axes. The axes are returned as the
-    attributes of the object, so for instance getAxes().xaxis is the
+    attributes of the object, so for instance `getAxes().xaxis` is the
     x axis.
 
     Various things are stuffed inside an axis object, e.g. you could
-    use getAxes().xaxis.ticks to find out what the ticks are for the
-    xaxis. Two other useful attributes are p2c and c2p, functions for
+    use `getAxes().xaxis.ticks` to find out what the ticks are for the
+    xaxis. Two other useful attributes are `p2c` and `c2p`, functions for
     transforming from data point space to the canvas plot space and
     back. Both returns values that are offset with the plot offset.
     Check the Flot source code for the complete set of attributes (or
-    output an axis with console.log() and inspect it).
+    output an axis with `console.log()` and inspect it).
 
-    With multiple axes, the extra axes are returned as x2axis, x3axis,
-    etc., e.g. getAxes().y2axis is the second y axis. You can check
-    y2axis.used to see whether the axis is associated with any data
-    points and y2axis.show to see if it is currently shown. 
- 
-  - getPlaceholder()
+    With multiple axes, the extra axes are returned as `x2axis`, `x3axis`,
+    etc., e.g. `getAxes().y2axis` is the second y axis. You can check
+    `y2axis.used` to see whether the axis is associated with any data
+    points and `y2axis.show` to see if it is currently shown.
+
+  - `getPlaceholder()`
 
     Returns placeholder that the plot was put into. This can be useful
     for plugins for adding DOM elements or firing events.
 
-  - getCanvas()
+  - `getCanvas()`
 
     Returns the canvas used for drawing in case you need to hack on it
     yourself. You'll probably need to get the plot offset too.
-  
-  - getPlotOffset()
+
+  - `getPlotOffset()`
 
     Gets the offset that the grid has within the canvas as an object
-    with distances from the canvas edges as "left", "right", "top",
-    "bottom". I.e., if you draw a circle on the canvas with the center
-    placed at (left, top), its center will be at the top-most, left
+    with distances from the canvas edges as `left`, `right`, `top`,
+    `bottom`. I.e., if you draw a circle on the canvas with the center
+    placed at `(left, top)`, its center will be at the top-most, left
     corner of the grid.
 
-  - getOptions()
+  - `getOptions()`
 
     Gets the options for the plot, normalized, with default values
     filled in. You get a reference to actual values used by Flot, so
     if you modify the values in here, Flot will use the new values.
-    If you change something, you probably have to call draw() or
-    setupGrid() or triggerRedrawOverlay() to see the change.
-    
+    If you change something, you probably have to call `draw()` or
+    `setupGrid()` or `triggerRedrawOverlay()` to see the change.
+
 
 ## Hooks ##
 
@@ -1190,8 +1190,8 @@ Here's an overview of the phases Flot goes through:
   8. Shutdown: this mostly happens in case a plot is overwritten 
 
 Each hook is simply a function which is put in the appropriate array.
-You can add them through the "hooks" option, and they are also available
-after the plot is constructed as the "hooks" attribute on the returned
+You can add them through the `hooks` option, and they are also available
+after the plot is constructed as the `hooks` attribute on the returned
 plot object, e.g.
 
 ```js
@@ -1209,7 +1209,7 @@ The available hooks are described below. All hook callbacks get the
 plot object as first parameter. You can find some examples of defined
 hooks in the plugins bundled with Flot.
 
- - processOptions  [phase 1]
+ - `processOptions`  [phase 1]
 
     ```function(plot, options)```
    
@@ -1218,17 +1218,17 @@ hooks in the plugins bundled with Flot.
     values is needed. A plugin might use it to detect that it has been
     enabled and then turn on or off other options.
 
- 
- - processRawData  [phase 3]
+
+ - `processRawData`  [phase 3]
 
     ```function(plot, series, data, datapoints)```
  
     Called before Flot copies and normalizes the raw data for the given
-    series. If the function fills in datapoints.points with normalized
-    points and sets datapoints.pointsize to the size of the points,
+    series. If the function fills in `datapoints.points` with normalized
+    points and sets `datapoints.pointsize` to the size of the points,
     Flot will skip the copying/normalization step for this series.
-   
-    In any case, you might be interested in setting datapoints.format,
+
+    In any case, you might be interested in setting `datapoints.format`,
     an array of objects for specifying how a point is normalized and
     how it interferes with axis scaling.
 
@@ -1243,22 +1243,22 @@ hooks in the plugins bundled with Flot.
 
     The first object means that for the first coordinate it should be
     taken into account when scaling the x axis, that it must be a
-    number, and that it is required - so if it is null or cannot be
+    number, and that it is required - so if it is `null` or cannot be
     converted to a number, the whole point will be zeroed out with
-    nulls. Beyond these you can also specify "defaultValue", a value to
-    use if the coordinate is null. This is for instance handy for bars
+    nulls. Beyond these you can also specify `defaultValue`, a value to
+    use if the coordinate is `null`. This is for instance handy for bars
     where one can omit the third coordinate (the bottom of the bar)
-    which then defaults to 0.
+    which then defaults to `0`.
 
- - processDatapoints  [phase 3]
+ - `processDatapoints`  [phase 3]
 
     ```function(plot, series, datapoints)```
 
     Called after normalization of the given series but before finding
     min/max of the data points. This hook is useful for implementing data
-    transformations. "datapoints" contains the normalized data points in
+    transformations. `datapoints` contains the normalized data points in
     a flat array as datapoints.points with the size of a single point
-    given in datapoints.pointsize. Here's a simple transform that
+    given in `datapoints.pointsize`. Here's a simple transform that
     multiplies all y coordinates by 2:
 
     ```js
@@ -1272,24 +1272,24 @@ hooks in the plugins bundled with Flot.
     Note that you must leave datapoints in a good condition as Flot
     doesn't check it or do any normalization on it afterwards.
 
- - processOffset  [phase 4]
+ - `processOffset`  [phase 4]
 
     ```function(plot, offset)```
 
     Called after Flot has initialized the plot's offset, but before it
     draws any axes or plot elements. This hook is useful for customizing
-    the margins between the grid and the edge of the canvas. "offset" is
-    an object with attributes "top", "bottom", "left" and "right",
+    the margins between the grid and the edge of the canvas. `offset` is
+    an object with attributes `top`, `bottom`, `left` and `right`,
     corresponding to the margins on the four sides of the plot.
 
- - drawBackground [phase 5]
+ - `drawBackground` [phase 5]
 
     ```function(plot, canvascontext)```
 
     Called before all other drawing operations. Used to draw backgrounds
     or other custom elements before the plot or axes have been drawn.
 
- - drawSeries  [phase 5]
+ - `drawSeries`  [phase 5]
 
     ```function(plot, canvascontext, series)```
 
@@ -1297,21 +1297,21 @@ hooks in the plugins bundled with Flot.
     standard drawing routine has been called in the loop that draws
     each series.
 
- - draw  [phase 5]
+ - `draw`  [phase 5]
 
     ```function(plot, canvascontext)```
 
     Hook for drawing on the canvas. Called after the grid is drawn
-    (unless it's disabled or grid.aboveData is set) and the series have
+    (unless it's disabled or `grid.aboveData` is set) and the series have
     been plotted (in case any points, lines or bars have been turned
     on). For examples of how to draw things, look at the source code.
 
- - bindEvents  [phase 6]
+ - `bindEvents`  [phase 6]
 
     ```function(plot, eventHolder)```
 
     Called after Flot has setup its event handlers. Should set any
-    necessary event handlers on eventHolder, a jQuery object with the
+    necessary event handlers on `eventHolder`, a jQuery object with the
     canvas, e.g.
 
     ```js
@@ -1322,25 +1322,25 @@ hooks in the plugins bundled with Flot.
     }
     ```
 
-    Interesting events include click, mousemove, mouseup/down. You can
+    Interesting events include `click`, `mousemove`, `mouseup/down`. You can
     use all jQuery events. Usually, the event handlers will update the
-    state by drawing something (add a drawOverlay hook and call
-    triggerRedrawOverlay) or firing an externally visible event for
+    state by drawing something (add a `drawOverlay` hook and call
+    `triggerRedrawOverlay`) or firing an externally visible event for
     user code. See the crosshair plugin for an example.
-     
-    Currently, eventHolder actually contains both the static canvas
+
+    Currently, `eventHolder` actually contains both the static canvas
     used for the plot itself and the overlay canvas used for
     interactive features because some versions of IE get the stacking
     order wrong. The hook only gets one event, though (either for the
     overlay or for the static canvas).
 
     Note that custom plot events generated by Flot are not generated on
-    eventHolder, but on the div placeholder supplied as the first
+    `eventHolder`, but on the div placeholder supplied as the first
     argument to the plot call. You can get that with
-    plot.getPlaceholder() - that's probably also the one you should use
+    `plot.getPlaceholder()` - that's probably also the one you should use
     if you need to fire a custom event.
 
- - drawOverlay  [phase 7]
+ - `drawOverlay`  [phase 7]
 
     ```function (plot, canvascontext)```
 
@@ -1351,22 +1351,22 @@ hooks in the plugins bundled with Flot.
     whenever something interesting happens. This hook is called when
     the overlay canvas is to be redrawn.
 
-    "canvascontext" is the 2D context of the overlay canvas. You can
+    `canvascontext` is the 2D context of the overlay canvas. You can
     use this to draw things. You'll most likely need some of the
-    metrics computed by Flot, e.g. plot.width()/plot.height(). See the
+    metrics computed by Flot, e.g. `plot.width()`/`plot.height()`. See the
     crosshair plugin for an example.
 
- - shutdown  [phase 8]
+ - `shutdown`  [phase 8]
 
     ```function (plot, eventHolder)```
 
-    Run when plot.shutdown() is called, which usually only happens in
+    Run when `plot.shutdown()` is called, which usually only happens in
     case a plot is overwritten by a new plot. If you're writing a
     plugin that adds extra DOM elements or event handlers, you should
     add a callback to clean up after you. Take a look at the section in
-    PLUGINS.txt for more info.
+    *PLUGINS.txt* for more info.
 
-   
+
 ## Plugins ##
 
 Plugins extend the functionality of Flot. To use a plugin, simply
@@ -1379,10 +1379,10 @@ Javascript minifier such as YUI Compressor.
 
 Here's a brief explanation of how the plugin plumbings work:
 
-Each plugin registers itself in the global array $.plot.plugins. When
-you make a new plot object with $.plot, Flot goes through this array
-calling the "init" function of each plugin and merging default options
-from the "option" attribute of the plugin. The init function gets a
+Each plugin registers itself in the global array `$.plot.plugins`. When
+you make a new plot object with `$.plot`, Flot goes through this array
+calling the `init` function of each plugin and merging default options
+from the `option` attribute of the plugin. The init function gets a
 reference to the plot object created and uses this to register hooks
 and add new public methods if needed.
 
