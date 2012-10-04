@@ -138,7 +138,7 @@ var options = {
         points: { show: true }
     }
 };
-	
+
 $.plot(placeholder, data, options);
 ```
 
@@ -221,10 +221,10 @@ xaxis, yaxis: {
     min: null or number
     max: null or number
     autoscaleMargin: null or number
-    
+
     transform: null or fn: number -> number
     inverseTransform: null or fn: number -> number
-    
+
     ticks: null or number or ticks array or (fn: axis -> ticks array)
     tickSize: number or array
     minTickSize: number or array
@@ -234,7 +234,7 @@ xaxis, yaxis: {
     labelWidth: null or number
     labelHeight: null or number
     reserveSpace: null or true
-    
+
     tickLength: null or number
 
     alignTicksWithAxis: null or number
@@ -582,7 +582,7 @@ xaxis: {
     mode: "time"
     timeformat: "%Y/%m/%d"
 }
-``` 
+```
 
 This will result in tick labels like 2000/12/24. A subset of the
 standard strftime specifiers are supported:
@@ -1171,7 +1171,7 @@ gets access to the internal data structures in Flot.
 Here's an overview of the phases Flot goes through:
 
   1. Plugin initialization, parsing options
-  
+
   2. Constructing the canvases used for drawing
 
   3. Set data: parsing data specification, calculating colors,
@@ -1187,7 +1187,7 @@ Here's an overview of the phases Flot goes through:
 
   7. Responding to events, if any
 
-  8. Shutdown: this mostly happens in case a plot is overwritten 
+  8. Shutdown: this mostly happens in case a plot is overwritten
 
 Each hook is simply a function which is put in the appropriate array.
 You can add them through the `hooks` option, and they are also available
@@ -1212,7 +1212,7 @@ hooks in the plugins bundled with Flot.
  - `processOptions`  [phase 1]
 
     ```function(plot, options)```
-   
+
     Called after Flot has parsed and merged options. Useful in the
     instance where customizations beyond simple merging of default
     values is needed. A plugin might use it to detect that it has been
@@ -1222,7 +1222,7 @@ hooks in the plugins bundled with Flot.
  - `processRawData`  [phase 3]
 
     ```function(plot, series, data, datapoints)```
- 
+
     Called before Flot copies and normalizes the raw data for the given
     series. If the function fills in `datapoints.points` with normalized
     points and sets `datapoints.pointsize` to the size of the points,
